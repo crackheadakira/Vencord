@@ -17,7 +17,7 @@
 */
 
 import { addPreEditListener, addPreSendListener, removePreEditListener, removePreSendListener } from "@api/MessageEvents";
-import { definePluginSettings, migratePluginSettings, Settings } from "@api/settings";
+import { definePluginSettings, Settings } from "@api/settings";
 import { Devs } from "@utils/constants";
 import { ApngBlendOp, ApngDisposeOp, getGifEncoder, importApngJs } from "@utils/dependencies";
 import { getCurrentGuild } from "@utils/discord";
@@ -148,8 +148,6 @@ const settings = definePluginSettings({
         restartNeeded: true
     }
 });
-
-migratePluginSettings("FakeNitro", "NitroBypass");
 
 export default definePlugin({
     name: "FakeNitro",
@@ -534,12 +532,12 @@ export default definePlugin({
 
         switch (type) {
             case "STICKER": {
-                node.push(" This is a Fake Nitro sticker. Only you can see it rendered like a real one, for non Vencord users it will show as a link.");
+                node.push(" This is a FakeNitro sticker and renders like a real sticker only for you. Appears as a link to non-plugin users.");
 
                 return node;
             }
             case "EMOJI": {
-                node.push(" This is a Fake Nitro emoji. Only you can see it rendered like a real one, for non Vencord users it will show as a link.");
+                node.push(" This is a FakeNitro emoji and renders like a real emoji only for you. Appears as a link to non-plugin users.");
 
                 return node;
             }
